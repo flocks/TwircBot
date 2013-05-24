@@ -11,17 +11,15 @@ var config = {
   "server" : "irc.freenode.org",
   "username" : "FlocksBot",
   "channel" : "#brillance2"
+  "nickname" : "TwircBot"
 };
-var client = new irc.Client('irc.freenode.org', 'FlocksBot', {
-    channels: ['#brillance2'],
+var client = new irc.Client(config.server, config.nickname, {
+    channels: [config.channel],
     port : 6667,
     showErrors : true,
     autoConnect : false,
     floodProtection : true
 });
-
-
-
 
   var TWEETOS = new Array();
   var HASHTAGS = new Array();
@@ -64,12 +62,10 @@ client.connect(0, function() {
        }
     }
 
-
   });
 });
 
 function checkTimeline() {
-  console.log(TWEETS_USED);
   async.forEach(TWEETOS, function(tweeto, callback) {
      twitter.getTimeline(tweeto, function(res) {
          
