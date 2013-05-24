@@ -30,8 +30,6 @@ TwitterApi.prototype.getTimeline = function(username, callback) {
 		method : 'GET'
 	};
 
-	console.log(options);
-
 	this.request(options, function(result) {
 		return callback(result);
 	});

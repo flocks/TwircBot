@@ -10,7 +10,7 @@ var twitter = new Twitter();
 var config = {
   "server" : "irc.freenode.org",
   "username" : "FlocksBot",
-  "channel" : "#brillance2"
+  "channel" : "#brillance2",
   "nickname" : "TwircBot"
 };
 var client = new irc.Client(config.server, config.nickname, {
@@ -72,14 +72,13 @@ function checkTimeline() {
           if (typeof res[0] != "undefined" ) {
 
           
-            if (typeof TWEETS_USED[res[0]['id']] != "undefined") {
+	    if (typeof TWEETS_USED[res[0]['id']] == "undefined") {
               client.say(config.channel, "Tweet by "+tweeto+" : ");
               client.say(config.channel, res[0]['text']);
-            }
-            else {
-           // we save the id of the tweets
               TWEETS_USED[res[0]['id']] = true;
+	      // we save the id of the tweets
             }
+
          }
 
          callback();
@@ -102,15 +101,13 @@ function removeUsername(username) {
 function checkHashTag() {
   async.forEach(HASHTAGS, function(hashtag, callback) {
      twitter.getHashTag(hashtag, function(res) {
-        
-        if (typeof res['result'] != "undefined" && typeof res['result'][0] != "undefined") {
-          if (typeof HASHTAGS_USED[res['result'][0]['id']] != "undefined") {
+	if (typeof res['results'] != "undefined" && typeof res['results'][0] != "undefined") {
+	  if (typeof HASHTAGS_USED[res['results'][0]['id']] == "undefined") {
             client.say(config.channel, "About :"+ hashtag);
             client.say(config.channel, res['results'][0]['text']);
-         }
-         else {
             HASHTAGS_USED[res['results'][0]['id']] = true;
          }
+
         }
          callback();
        });
@@ -124,7 +121,7 @@ function checkHashTag() {
 setInterval(function() {
   checkHashTag();
   checkTimeline();
-}, 60000);
+}, 1000);
 
 
 
