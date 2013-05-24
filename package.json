@@ -1,0 +1,9 @@
+{
+  "name": "ircHashTagBot",
+  "description": "An IRC client library for node",
+  "version": "0.0.1",
+  "author": "Florent Teissier (teissierflorent@gmail.com)",
+  "devDependencies": {
+    "irc": "~0.3.6"
+  }
+}
