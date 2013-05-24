@@ -4,7 +4,7 @@ function TwitterApi() {
 	this.url = "search.twitter.com";
 };
 
-TwitterApi.prototype.getHashTag = function(hashtag,nb_tweet, callback) {
+TwitterApi.prototype.getHashTag = function(hashtag, callback) {
 	var options = {
 		host : this.url,
 		port : 80,
@@ -19,6 +19,22 @@ TwitterApi.prototype.getHashTag = function(hashtag,nb_tweet, callback) {
 	});
 
 
+};
+
+TwitterApi.prototype.getTimeline = function(username, callback) {
+	var options = {
+		host : "api.twitter.com",
+		port : 80,
+		path : '/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='+username.substring(1)+'&count=1', // we get rid of the @
+		dataType:'jsonp',
+		method : 'GET'
+	};
+
+	console.log(options);
+
+	this.request(options, function(result) {
+		return callback(result);
+	});
 };
 
 TwitterApi.prototype.request = function(options, callback) {

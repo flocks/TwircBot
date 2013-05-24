@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "author": "Florent Teissier (teissierflorent@gmail.com)",
   "devDependencies": {
-    "irc": "~0.3.6"
+    "irc": "~0.3.6",
+    "async": "~0.2.8"
   }
 }
