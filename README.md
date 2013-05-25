@@ -19,7 +19,7 @@ add the hashtag #Obama to the list of hashtag the bot is in charge to watch. Eac
 `````javascript
 add @Obama
 `````
-add the tweets of the username @Obama to the list of personn to watch.
+add the tweets of the username @Obama to the list of persons to watch.
 
 Installation 
 `````javascript
