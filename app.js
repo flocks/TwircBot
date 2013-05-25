@@ -52,13 +52,13 @@ client.connect(0, function() {
        var entity = messages[1];
 
        if (entity.contains('@')) {
-	  TWEETOS.push(entity);
-		client.say(config.channel, entity +"added to the list");
+	       TWEETOS.push(entity);
+		      client.say(config.channel, entity +"added to the list");
 
        }
        else if (entity.contains('#')) {
-	  HASHTAGS.push(entity);
-		client.say(config.channel, entity +"added to the list");
+		HASHTAGS.push(entity);
+		      client.say(config.channel, entity +"added to the list");
        }
        else {
           client.say(config.channel, "Error, may be you meant #"+entity +" or @"+entity );
