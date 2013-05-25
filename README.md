@@ -15,11 +15,12 @@ gives you the 5 latest tweets about Obama.
 add #Obama
 `````
  
-`````javascript
+
 add the hashtag #Obama to the list of hashtag the bot is in charge to watch.
+`````javascript
 add @Obama
 `````
-add the tweets of the username @Obama to the list of persons to watch.
+add the username @Obama to the list of persons to watch.
 
 Each minut, the bot checks if there are new tweets.
 
