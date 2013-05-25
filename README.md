@@ -1,10 +1,10 @@
 TwircBot
 ==========
 
-TwircBot is a <u>lightweight</u> IRC Bot which simply connect to a irc server, join a channel and give you news from Twitter.
+TwircBot is a <u>lightweight</u> IRC Bot which simply connects to a irc server, join a channel and give you news from Twitter.
 It is written in NodeJS thanks to the awesome lib node-irc and to the twitter API.
 
-It allows you to bind Twitter users's timeline and hashtag to your favorite IRC Channel.
+It allows you to bind Twitter users's timeline and hashtags to your favorite IRC Channel.
 
 <h3>Commands</h3>
 `````javascript
