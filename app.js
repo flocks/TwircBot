@@ -53,9 +53,12 @@ client.connect(0, function() {
 
        if (entity.contains('@')) {
             TWEETOS.push(entity);
+	    client.say(config.channel, entity +" to the list");
+
        }
        else if (entity.contains('#')) {
             HASHTAGS.push(entity);
+	    client.say(config.channel, entity +" to the list");
        }
        else {
           client.say(config.channel, "Error, may be you meant #"+entity +" or @"+entity );
@@ -86,8 +89,7 @@ function checkTimeline() {
 
           
 	    if (typeof TWEETS_USED[res[0]['id']] == "undefined") {
-              client.say(config.channel, "Tweet by "+tweeto+" : ");
-              client.say(config.channel, res[0]['text']);
+	      client.say(config.channel, "By "+ tweeto + " "+res[0]['text']);
               TWEETS_USED[res[0]['id']] = true;
 	      // we save the id of the tweets
             }
