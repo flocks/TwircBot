@@ -79,7 +79,6 @@ client.connect(0, function() {
 });
 
 function checkTimeline() {
-  console.log(TWEETOS);
   async.forEach(TWEETOS, function(tweeto, callback) {
      twitter.getTimeline(tweeto, function(res) {
          
@@ -113,7 +112,6 @@ function removeUsername(username) {
 }
 
 function checkHashTag() {
-  console.log(HASHTAGS);
   async.forEach(HASHTAGS, function(hashtag, callback) {
      twitter.getHashTag(hashtag, function(res) {
 	if (typeof res['results'] != "undefined" && typeof res['results'][0] != "undefined") {
@@ -136,7 +134,7 @@ function checkHashTag() {
 setInterval(function() {
   checkHashTag();
   checkTimeline();
-}, 1000);
+}, 60000);
 
 
 
