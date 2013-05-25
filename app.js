@@ -47,7 +47,7 @@ client.connect(0, function() {
 
     }
 
-    if (message.contains("add")) {
+    else if (message.contains("add")) {
        var messages = message.split('add ');
        var entity = messages[1];
 
@@ -61,11 +61,25 @@ client.connect(0, function() {
           client.say(config.channel, "Error, may be you meant #"+entity +" or @"+entity );
        }
     }
+    else if (message.contains("remove")) {
+       var messages = message.split('remove ');
+       var entity = messages[1];
+
+       if (entity.contains('@')) {
+          removeUsername(entity);
+       }
+       else if (entity.contains('#')) {
+          removeHashTag(entity);
+       }
+       
+       client.say(config.channel, "Okay "+from +" :"+entity + " removed from the list")
+    }
 
   });
 });
 
 function checkTimeline() {
+  console.log(TWEETOS);
   async.forEach(TWEETOS, function(tweeto, callback) {
      twitter.getTimeline(tweeto, function(res) {
          
@@ -99,6 +113,7 @@ function removeUsername(username) {
 }
 
 function checkHashTag() {
+  console.log(HASHTAGS);
   async.forEach(HASHTAGS, function(hashtag, callback) {
      twitter.getHashTag(hashtag, function(res) {
 	if (typeof res['results'] != "undefined" && typeof res['results'][0] != "undefined") {
