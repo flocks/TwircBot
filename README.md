@@ -26,6 +26,6 @@ Each minut, the bot checks if there are new tweets.
 Installation 
 `````javascript
 git clone https://github.com/flocks/hashTagBot.git
-npm install // install devDependencies from package.
+npm install // install devDependencies from package.json
 node app.js 
 `````
