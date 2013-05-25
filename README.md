@@ -10,7 +10,7 @@ It allows you to bind Twitter users's timeline and hashtags to your favorite IRC
 `````javascript
 hashtag Obama
 `````
-gives you the 5 latest tweet about Obama.
+gives you the 5 latest tweets about Obama.
 `````javascript
 add #Obama
 `````
