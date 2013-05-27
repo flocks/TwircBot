@@ -22,6 +22,11 @@ var client = new irc.Client(config.server, config.nickname, {
 });
 
   var TWEETOS = new Array();
+  TWEETOS.push("@frenchweb");
+  TWEETOS.push("@TechCrunch");
+  TWEETOS.push("@spacenick");
+  TWEETOS.push("@pressecitron");
+
   var HASHTAGS = new Array();
 
   var TWEETS_USED = {};
@@ -35,29 +40,31 @@ client.connect(0, function() {
 
 
   client.addListener('message', function (from,to, message) {
-    if (message.contains("hashtag")) {
-       var messages = message.split('hashtag ');
-       var hashtag = messages[1];
-       twitter.getHashTag(hashtag,function(res) {
-         client.say(config.channel, "Tweets I found about :"+ hashtag);
-         for(var k in res['results']) {
-          client.say(config.channel, res['results'][k]['text']);
-         }
-       });
+    if (typeof message != 'undefined') {
+
+
+      if (message.contains("hashtag")) {
+        var messages = message.split('hashtag ');
+        var hashtag = messages[1];
+        twitter.getHashTag(hashtag,function(res) {
+          client.say(config.channel, "Tweets I found about :"+ hashtag);
+          for(var k in res['results']) {
+            client.say(config.channel, res['results'][k]['text']);
+          }
+        });
 
     }
 
-    else if (message.contains("add")) {
-       var messages = message.split('add ');
-       var entity = messages[1];
+      else if (message.contains("add")) {
+        var messages = message.split('add ');
+        var entity = messages[1];
 
-       if (entity.contains('@')) {
-	       TWEETOS.push(entity);
-		      client.say(config.channel, entity +" added to the list");
-
-       }
+        if (entity.contains('@')) {
+	         TWEETOS.push(entity);
+		       client.say(config.channel, entity +" added to the list");
+        }
        else if (entity.contains('#')) {
-		HASHTAGS.push(entity);
+		      HASHTAGS.push(entity);
 		      client.say(config.channel, entity +" added to the list");
        }
        else {
@@ -75,9 +82,9 @@ client.connect(0, function() {
           removeHashTag(entity);
        }
        
-       client.say(config.channel, "Okay "+from +" :"+entity + " removed from the list")
+        client.say(config.channel, "Okay "+from +" :"+entity + " removed from the list")
+      }
     }
-
   });
 });
 
