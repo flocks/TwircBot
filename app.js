@@ -84,23 +84,23 @@ client.connect(0, function() {
        
         client.say(config.channel, "Okay "+from +" :"+entity + " removed from the list")
       }
-      else if (message.contains("list")) {
+      else if (message.contains("!list")) {
           client.say(config.channel, "Hashtags list :");
           for(var i = 0; i < HASHTAGS.length; i++) {
-             client.say(config.channel, HASHTAGS[i]);
+             client.say(config.channel, '-' + HASHTAGS[i]);
           }
           client.say(config.channel, "Tweetos list :");
           for(i =0; i < TWEETOS.length; i++) {
-              client.say(config.channel, TWEETOS[i]);
+              client.say(config.channel, '-' + TWEETOS[i]);
           }
       }
-      else if (message.contains("help")) {
-        client.say(config.channel, "add @username");
-        client.say(config.channel, "add #hashTag");
-        client.say(config.channel, "remove @username");
-        client.say(config.channel, "remove #hashtag");
-        client.say(config.channel, "list");
-      
+      else if (message.contains("!help")) {
+        client.say(config.channel, "- add @username");
+        client.say(config.channel, "- add #hashTag");
+        client.say(config.channel, "- remove @username");
+        client.say(config.channel, "- remove #hashtag");
+        client.say(config.channel, "- list");
+
       }
     }
   });
