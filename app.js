@@ -38,7 +38,7 @@ client.connect(0, function() {
     if (message.contains("hashtag")) {
        var messages = message.split('hashtag ');
        var hashtag = messages[1];
-       twitter.getHashTag(hashtag, 5, function(res) {
+       twitter.getHashTag(hashtag,function(res) {
          client.say(config.channel, "Tweets I found about :"+ hashtag);
          for(var k in res['results']) {
           client.say(config.channel, res['results'][k]['text']);
