@@ -9,8 +9,8 @@ require('./utils.js');
 var twitter = new Twitter();
 var config = {
   "server" : "irc.freenode.org",
-  "username" : "FlocksBot",
-  "channel" : "#brillance2",
+  "username" : "TwircBot",
+  "channel" : "#brillance",
   "nickname" : "TwircBot"
 };
 var client = new irc.Client(config.server, config.nickname, {
@@ -53,12 +53,12 @@ client.connect(0, function() {
 
        if (entity.contains('@')) {
 	       TWEETOS.push(entity);
-		      client.say(config.channel, entity +"added to the list");
+		      client.say(config.channel, entity +" added to the list");
 
        }
        else if (entity.contains('#')) {
 		HASHTAGS.push(entity);
-		      client.say(config.channel, entity +"added to the list");
+		      client.say(config.channel, entity +" added to the list");
        }
        else {
           client.say(config.channel, "Error, may be you meant #"+entity +" or @"+entity );
