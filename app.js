@@ -99,7 +99,7 @@ client.connect(0, function() {
         client.say(config.channel, "- add #hashTag");
         client.say(config.channel, "- remove @username");
         client.say(config.channel, "- remove #hashtag");
-        client.say(config.channel, "- list");
+        client.say(config.channel, "- !list");
 
       }
     }
