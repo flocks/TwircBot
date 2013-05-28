@@ -59,11 +59,11 @@ client.connect(0, function() {
         var messages = message.split('add ');
         var entity = messages[1];
 
-        if (entity.contains('@')) {
+        if (typeof entity != 'undefined' && entity.contains('@')) {
 	         TWEETOS.push(entity);
 		       client.say(config.channel, entity +" added to the list");
         }
-       else if (entity.contains('#')) {
+       else if (typeof entity != 'undefined' && entity.contains('#')) {
 		      HASHTAGS.push(entity);
 		      client.say(config.channel, entity +" added to the list");
        }
@@ -75,10 +75,10 @@ client.connect(0, function() {
        var messages = message.split('remove ');
        var entity = messages[1];
 
-       if (entity.contains('@')) {
+       if (typeof entity != 'undefined' && entity.contains('@')) {
           removeUsername(entity);
        }
-       else if (entity.contains('#')) {
+       else if (typeof entity != 'undefined' && entity.contains('#')) {
           removeHashTag(entity);
        }
        
