@@ -61,11 +61,11 @@ client.connect(0, function() {
 
         if (typeof entity != 'undefined' && entity.contains('@')) {
 	         TWEETOS.push(entity);
-		       client.say(config.channel, entity +" added to the list");
+		       client.say(config.channel, "user " + entity +" added to the list");
         }
        else if (typeof entity != 'undefined' && entity.contains('#')) {
 		      HASHTAGS.push(entity);
-		      client.say(config.channel, entity +" added to the list");
+		      client.say(config.channel, "hashtag " + entity +" added to the list");
        }
        else {
           client.say(config.channel, "Error, may be you meant #"+entity +" or @"+entity );
@@ -82,7 +82,6 @@ client.connect(0, function() {
           removeHashTag(entity);
        }
        
-        client.say(config.channel, "Okay "+from +" :"+entity + " removed from the list")
       }
       else if (message.contains("!list")) {
           client.say(config.channel, "Hashtags list :");
@@ -132,10 +131,12 @@ function checkTimeline() {
 
 function removeHashTag(hash) {
   HASHTAGS.remove(hash);
+  client.say(config.channel, "okay "+ from +", hashtag "+ entity + " removed from the list")
 }
 
 function removeUsername(username) {
   TWEETOS.remove(username);
+  client.say(config.channel, "okay "+ from +", user "+ entity + " removed from the list")
 }
 
 function checkHashTag() {
